@@ -17,8 +17,8 @@ from model.models import STEPmi
 import argparse
 import random
 from scipy.spatial.distance import cdist
-from create_graph_and_embeddings_STEPmi import TemporalGraphDatasetMirna
-from STGCN_losses import miRNA_enhanced_temporal_loss
+from mirna.create_graph_and_embeddings_STEPmi import TemporalGraphDatasetMirna
+from step_losses import miRNA_enhanced_temporal_loss
 from sklearn.manifold import TSNE
 
 
@@ -76,7 +76,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     
     train_sequences, train_labels, val_sequences, val_labels, train_idx, val_idx = dataset.split_sequences(sequences, labels)
     
-    with open('comparison/plottings_STEPmi/split_indices.txt', 'w') as f:
+    with open('plottings_STEPmi/split_indices.txt', 'w') as f:
         f.write("Train Indices:\n")
         f.write(", ".join(map(str, train_idx)) + "\n")
         f.write("\nValidation Indices:\n")
@@ -97,7 +97,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     best_val_loss = float('inf')
     patience = 20
     patience_counter = 0
-    save_dir = 'comparison/plottings_STGCN_STEPmi_without_LSTM'
+    save_dir = 'plottings_STEPmi'
     os.makedirs(save_dir, exist_ok=True)
 
     train_losses = []
@@ -207,7 +207,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     
     return model, val_sequences, val_labels, train_losses, val_losses, train_sequences, train_labels
 
-def evaluate_model_performance(model, val_sequences, val_labels, dataset,save_dir='comparison/plottings_STEPmi'):
+def evaluate_model_performance(model, val_sequences, val_labels, dataset,save_dir='plottings_STEPmi'):
 
     os.makedirs(save_dir, exist_ok=True)
     model.eval()
@@ -363,7 +363,7 @@ def create_evaluation_plots(predictions, targets, dataset, save_dir):
     # 3. Gene temporal patterns for all genes
     create_gene_temporal_plots(predictions, targets, dataset, save_dir)
 
-def plot_gene_predictions_train_val(model, train_sequences, train_labels, val_sequences, val_labels, dataset, save_dir='comparison/plottings_STEPmi', genes_per_page=12):
+def plot_gene_predictions_train_val(model, train_sequences, train_labels, val_sequences, val_labels, dataset, save_dir='plottings_STEPmi', genes_per_page=12):
 
     os.makedirs(save_dir, exist_ok=True)
     model.eval()
@@ -431,7 +431,7 @@ def plot_gene_predictions_train_val_proper_label(
     val_sequences, 
     val_labels, 
     dataset,
-    save_dir='comparison/plottings_STEPmi', 
+    save_dir='plottings_STEPmi', 
     genes_per_page=12
 ):
     os.makedirs(save_dir, exist_ok=True)
@@ -587,7 +587,7 @@ def analyze_gene_characteristics(dataset, predictions, targets):
     plt.title('Distribution of Gene Correlations')
     
     plt.tight_layout()
-    plt.savefig('comparison/plottings_STGCN_STEPmi_without_LSTM/gene_analysis.png')
+    plt.savefig('plottings_STEPmi/gene_analysis.png')
     plt.close()
     
     print("\nGene Analysis Summary:")
@@ -633,7 +633,7 @@ def analyze_temporal_patterns(dataset, predictions, targets):
     plt.xlabel('Time Point')
     plt.ylabel('Prediction Accuracy')
     plt.title('Prediction Accuracy Over Time')
-    plt.savefig(f'comparison/plottings_STGCN_STEPmi_without_LSTM/pred_accuracy.png')
+    plt.savefig(f'plottings_STEPmi/pred_accuracy.png')
 
     print("\nTemporal Analysis:")
     print(f"Best predicted time point: {np.argmax(time_point_accuracy)}")
@@ -665,9 +665,8 @@ class Args_miRNA:
 
 if __name__ == "__main__":
     dataset = TemporalGraphDatasetMirna(
-        csv_file = 'mapped/miRNA_expression_mean/standardized_time_columns_meaned_expression_values_get_closest.csv',
+        csv_file = '/Users/beyzakaya/Desktop/STEP/dataset/mirna/interaction_mirna.csv',
         embedding_dim=256,
-        #seq_len=6,
         seq_len=10,
         pred_len=1
     )
@@ -707,7 +706,7 @@ if __name__ == "__main__":
     plt.legend(fontsize=12)
     plt.tight_layout()
 
-    plt.savefig("comparison/plottings_STEPmi/gene_embedding_trajectories_mrna.pdf", dpi=900)
+    plt.savefig("plottings_STEPmi/gene_embedding_trajectories_mrna.pdf", dpi=900)
     plt.show()
    
     model, val_sequences, val_labels, train_losses, val_losses, train_sequences, train_labels = train_stgcn(dataset, val_ratio=0.2)
