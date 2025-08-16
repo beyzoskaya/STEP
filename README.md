@@ -33,7 +33,33 @@ Each dataset is organized such that:
 ### Dataset Files
 
 - `dataset/mrna/interaction_mrna.csv` → Contains processed mRNA interaction data with enriched features  
-- `dataset/mirna//interaction_mirna.csv` → Contains processed miRNA interaction data with enriched features  
+- `dataset/mirna//interaction_mirna.csv` → Contains processed miRNA interaction data with enriched features
+
+## Architectures
+We propose two separate neural architectures tailored to the distinct characteristics of **mRNA** and **miRNA** datasets.  
+Both architectures use **Spatio-Temporal Graph Convolutional Networks (ST-GCNs)** as a backbone, with dataset-specific enhancements.
+
+### STEPmr (for mRNA)
+
+- Backbone: **ST-GCN**  
+- Two **Spatio-Temporal (ST) blocks**  
+- **Connectivity attention** module to capture dependencies among connected genes  
+- Designed for sparser temporal datasets with fewer target genes
+**Architecture Diagram**  
+![STEPmr Architecture](images/mrna_architecture_new.png)
+
+---  
+
+### STEPmi (for miRNA)
+
+- Backbone: **ST-GCN**  
+- Three **Spatio-Temporal (ST) blocks**  
+- **4-layer Bidirectional LSTM** to model long-range temporal dependencies  
+- **4-layer Multi-Head Attention** to capture complex regulatory relationships  
+- Designed for larger and more complex miRNA datasets with more target genes and time points  
+
+**Architecture Diagram**  
+![STEPmi Architecture](images/mirna_architecture_new.png)
 
 ## Environment Setup
 
