@@ -45,6 +45,7 @@ Both architectures use **Spatio-Temporal Graph Convolutional Networks (ST-GCNs)*
 - Two **Spatio-Temporal (ST) blocks**  
 - **Connectivity attention** module to capture dependencies among connected genes  
 - Designed for sparser temporal datasets with fewer target genes
+  
 **Architecture Diagram**  
 ![STEPmr Architecture](images/mrna_architecture_new.png)
 
