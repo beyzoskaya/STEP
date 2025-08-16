@@ -81,14 +81,14 @@ A number of additional scripts are included in the project to support data proce
   - Maps Hi-C interactions to gene expression data across chromosome bins. 
   - Converts normalized Hi-C data into features usable for graph construction.   
   - Adds additional biologically relevant features to original expression dataset.
-  - 
+
 #### Graph Creation and Node Embeddings
 
 - **`create_graph_and_embedding_STEPmr.py/create_graph_and_embedding_STEPmi.py`**  
   This scripts generates separate graphs for each time point.  
   - Node features include temporal Node2vec embeddings.  
   - Edges are constructed based on biologically informed criteria, integrating Hi-C interactions, TAD boundaries, chromatin compartments, insulation scores, and gene expression values.
-  - 
+
 #### Temporal Loss Functions
 
 - **`step_losses.py`**  
