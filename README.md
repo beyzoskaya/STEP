@@ -71,6 +71,30 @@ python -m mirna.STEPmi_train_test
 - Predictions and visualizations for test sets are produced automatically.
 - Plots and outputs are stored in the designated results folder.
 
+### Additional Scripts
+A number of additional scripts are included in the project to support data processing and model training in addition to the core training/testing scripts:
+
+#### Raw Data Processing
+
+- **`raw_data_conversion/` folder**  
+  Scripts for preprocessing and integrating biological data:
+  - Maps Hi-C interactions to gene expression data across chromosome bins. 
+  - Converts normalized Hi-C data into features usable for graph construction.   
+  - Adds additional biologically relevant features to original expression dataset.
+  - 
+#### Graph Creation and Node Embeddings
+
+- **`create_graph_and_embedding_STEPmr.py/create_graph_and_embedding_STEPmi.py`**  
+  This scripts generates separate graphs for each time point.  
+  - Node features include temporal Node2vec embeddings.  
+  - Edges are constructed based on biologically informed criteria, integrating Hi-C interactions, TAD boundaries, chromatin compartments, insulation scores, and gene expression values.
+  - 
+#### Temporal Loss Functions
+
+- **`step_losses.py`**  
+  Contains temporal-aware loss functions used by `STEPmr_train_test` and `STEPmi_train_test`.  
+  - Includes directional loss, temporal trend loss, and prediction consistency loss.  
+  - These losses help the models better capture dynamic gene expression patterns over time handle early convergence.
 
 
 
