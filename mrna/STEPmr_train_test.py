@@ -55,7 +55,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     torch.manual_seed(42)
     train_sequences, train_labels, val_sequences, val_labels, train_idx, val_idx = dataset.split_sequences(sequences, labels)
     
-    with open('plottings_STEPmr/split_indices.txt', 'w') as f:
+    with open('plottings_STEPmr_trial/split_indices.txt', 'w') as f:
         f.write("Train Indices:\n")
         f.write(", ".join(map(str, train_idx)) + "\n")
         f.write("\nValidation Indices:\n")
@@ -72,7 +72,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     best_val_loss = float('inf')
     patience = 20
     patience_counter = 0
-    save_dir = 'plottings_STEPmr'
+    save_dir = 'plottings_STEPmr_trial'
     os.makedirs(save_dir, exist_ok=True)
 
     train_losses = []
@@ -176,7 +176,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     
     return model, val_sequences, val_labels, train_losses, val_losses, train_sequences, train_labels 
 
-def evaluate_model_performance(model, val_sequences, val_labels, dataset, save_dir='plottings_STEPmr'):
+def evaluate_model_performance(model, val_sequences, val_labels, dataset, save_dir='plottings_STEPmr_trial'):
 
     os.makedirs(save_dir, exist_ok=True)
     model.eval()
@@ -355,7 +355,7 @@ def create_evaluation_plots(predictions, targets, dataset, save_dir):
     # 3. Gene temporal patterns for all genes
     create_gene_temporal_plots(predictions, targets, dataset, save_dir)
 
-def plot_gene_predictions_train_val(model, train_sequences, train_labels, val_sequences, val_labels, dataset, save_dir='plottings_STEPmr', genes_per_page=12):
+def plot_gene_predictions_train_val(model, train_sequences, train_labels, val_sequences, val_labels, dataset, save_dir='plottings_STEPmr_trial', genes_per_page=12):
 
     os.makedirs(save_dir, exist_ok=True)
     model.eval()
@@ -510,7 +510,7 @@ def analyze_gene_characteristics(dataset, predictions, targets):
     plt.title('Distribution of Gene Correlations')
     
     plt.tight_layout()
-    plt.savefig('plottings_STEPmr/gene_analysis.png')
+    plt.savefig('plottings_STEPmr_trial/gene_analysis.png')
     plt.close()
     
     print("\nGene Analysis Summary:")
@@ -556,7 +556,7 @@ def analyze_temporal_patterns(dataset, predictions, targets):
     plt.xlabel('Time Point')
     plt.ylabel('Prediction Accuracy')
     plt.title('Prediction Accuracy Over Time')
-    plt.savefig(f'plottings_STEPmr/pred_accuracy.png')
+    plt.savefig(f'plottings_STEPmr_trial/pred_accuracy.png')
 
     print("\nTemporal Analysis:")
     print(f"Best predicted time point: {np.argmax(time_point_accuracy)}")
@@ -628,7 +628,7 @@ if __name__ == "__main__":
     plt.legend(fontsize=12)
     plt.tight_layout()
 
-    plt.savefig("plottings_STEPmr/gene_embedding_trajectories_mrna.pdf", dpi=900)
+    plt.savefig("plottings_STEPmr_trial/gene_embedding_trajectories_mrna.pdf", dpi=900)
     plt.show()
     
 
