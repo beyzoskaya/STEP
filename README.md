@@ -26,4 +26,4 @@ Predictions are biologically interpretable, revealing processes like neural remo
 ### Installation Instructions
 **Step 1: Create Conda Environment**
 ```bash
-conda create -n your-project-name python=3.8 pytorch torchvision torchaudio -c pytorch -c conda-forge
+conda create -n STEPenv python=3.8 pytorch torchvision torchaudio -c pytorch -c conda-forge
