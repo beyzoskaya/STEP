@@ -12,5 +12,5 @@ We aim to predict temporal gene expression for mRNAs and miRNAs while understand
 2. Analyze predicted patterns biologically, using pathway and functional enrichment analyses.
 
 Genes are nodes in our dynamic graph model of gene expression, while edges stand for spatial and regulatory relationships. Two neural networks with spatiotemporal graphs are used:
-- **\methodmrna:** Optimized for sparser mRNA datasets, with temporal Node2vec embeddings capturing dynamic neighborhoods.  
-- **\methodmirna:** Handles complex miRNA datasets using spatio-temporal blocks, LSTM, and multi-head attention.  
+- **STEPmr:** Optimized for sparser mRNA datasets, with temporal Node2vec embeddings capturing dynamic neighborhoods.  
+- **STEPmi:** Handles complex miRNA datasets using spatio-temporal blocks, LSTM, and multi-head attention.  
