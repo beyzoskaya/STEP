@@ -14,3 +14,5 @@ We aim to predict temporal gene expression for mRNAs and miRNAs while understand
 Genes are nodes in our dynamic graph model of gene expression, while edges stand for spatial and regulatory relationships. Two neural networks with spatiotemporal graphs are used:
 - **STEPmr:** Optimized for sparser mRNA datasets, with temporal Node2vec embeddings capturing dynamic neighborhoods.  
 - **STEPmi:** Handles complex miRNA datasets using spatio-temporal blocks, LSTM, and multi-head attention.  
+
+Predictions are biologically interpretable, revealing processes like neural remodeling, metabolism changes, and stress response. Key innovations include spatio-temporal GNNs, temporal embeddings, biologically-informed edge weights, and a custom multi-component loss function.
