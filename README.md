@@ -17,6 +17,24 @@ Genes are nodes in our dynamic graph model of gene expression, while edges stand
 
 Predictions are biologically interpretable, revealing processes like neural remodeling, metabolism changes, and stress response. Key innovations include spatio-temporal GNNs, temporal embeddings, biologically-informed edge weights, and a custom multi-component loss function.
 
+## Dataset Specifications
+This project uses two separate datasets for the interacting target genes of **miRNA** and **mRNA**, each with different numbers of time points and total number of target genes.  
+The datasets are enriched with biologically relevant structural features obtained from Hi-C data, including:
+- **Insulation scores**  
+- **Topologically Associated Domain (TAD) boundaries**  
+- **A/B chromatin compartments**
+
+Each dataset is organized such that:
+
+- **Rows** represent pairs of interacting genes across multiple time points.  
+- **Columns** include raw expression values and enhanced structural/functional features.  
+- These datasets serve as the foundation for creating dynamic spatio-temporal graphs used in the models.
+
+### Dataset Files
+
+- `dataset/mrna/interaction_mrna.csv` → Contains processed mRNA interaction data with enriched features  
+- `dataset/mirna//interaction_mirna.csv` → Contains processed miRNA interaction data with enriched features  
+
 ## Environment Setup
 
 ### Prerequisites
