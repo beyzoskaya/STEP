@@ -1,1 +1,1 @@
-"""mrna package: contains training scripts."""
+# allows importing modules from mirna as a package

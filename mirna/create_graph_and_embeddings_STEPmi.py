@@ -20,6 +20,7 @@ from scipy import stats
 from scipy.spatial.distance import pdist, squareform
 from torch.utils.data import DataLoader, TensorDataset
 import random
+import pickle
 
 # Temporal Node2Vec doesn't change the dimensional aspect of the model but change the creation of the embeddings in terms of capturing relations
 class TemporalNode2Vec:
@@ -231,11 +232,11 @@ class TemporalGraphDatasetMirna:
         
         save_path = os.path.join(save_dir, f"temporal_embeddings_dim{self.embedding_dim}_seq{self.seq_len}_pred{self.pred_len}.pkl")
 
-        #if os.path.exists(save_path):
-        #    print(f"Loading temporal embeddings from {save_path}")
-        #    with open(save_path, 'rb') as f:
-        #        saved = pickle.load(f)
-        #    return saved['temporal_features'], saved['temporal_edge_indices'], saved['temporal_edge_attrs']
+        if os.path.exists(save_path):
+            print(f"Loading temporal embeddings from {save_path}")
+            with open(save_path, 'rb') as f:
+                saved = pickle.load(f)
+            return saved['temporal_features'], saved['temporal_edge_indices'], saved['temporal_edge_attrs']
         
         print("\nNormalizing expression values across all time points...")
         all_expressions = []

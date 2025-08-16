@@ -53,7 +53,7 @@ def train_stgcn(dataset,val_ratio=0.2):
     args.gso = torch.eye(args.n_vertex) - D @ adj @ D
     
     torch.manual_seed(42)
-    train_sequences, train_labels, val_sequences, val_labels, train_idx, val_idx = dataset.split_sequences(sequences, labels)
+    train_sequences, train_labels, val_sequences, val_labels, train_idx, val_idx = dataset.split_sequences_from_idx(sequences, labels)
     
     with open('plottings_STEPmr_trial/split_indices.txt', 'w') as f:
         f.write("Train Indices:\n")
