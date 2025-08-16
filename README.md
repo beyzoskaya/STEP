@@ -45,6 +45,21 @@ pip install gensim gseapy node2vec pyvis biothings-client mygene adjustText open
 pip install pandas matplotlib seaborn scikit-learn scipy jupyter requests pyyaml tqdm
 ```
 
+## Running the Scripts
+The project provides separate scripts for training and testing the models for mRNA and miRNA datasets. These scripts handle model training, make predictions on the test set, and generate additional plots for analysis.
+
+### mRNA Dataset
+
+To train and test the mRNA model (`STEPmr`), run:
+
+```bash
+python -m mrna.STEPmr_train_test
+```
+
+- This script trains the STEPmr architecture on the mRNA dataset.
+- After training, it generates predictions on the test set.
+- Plots summarizing the results (e.g., predicted vs actual expression) are saved automatically.
+
 
 
 
