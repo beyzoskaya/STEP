@@ -48,7 +48,7 @@ pip install pandas matplotlib seaborn scikit-learn scipy jupyter requests pyyaml
 ## Running the Scripts
 The project provides separate scripts for training and testing the models for mRNA and miRNA datasets. These scripts handle model training, make predictions on the test set, and generate additional plots for analysis.
 
-### mRNA Dataset
+### mRNA Dataset (dataset/mrna/interaction_mrna.csv)
 
 To train and test the mRNA model (`STEPmr`), run:
 
@@ -60,6 +60,16 @@ python -m mrna.STEPmr_train_test
 - After training, it generates predictions on the test set.
 - Plots summarizing the results (e.g., predicted vs actual expression) are saved automatically.
 
+### miRNA Dataset (dataset/mirna/interaction_mirna.csv)
+
+To train and test the miRNA model (`STEPmi`), run:
+
+```bash
+python -m mirna.STEPmi_train_test
+```
+- This script trains the STEPmi on the miRNA dataset.
+- Predictions and visualizations for test sets are produced automatically.
+- Plots and outputs are stored in the designated results folder.
 
 
 
