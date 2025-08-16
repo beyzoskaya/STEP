@@ -34,3 +34,18 @@ conda create -n STEPenv python=3.8 pytorch torchvision torchaudio -c pytorch -c 
 conda activate STEPenv
 ```
 
+**Step 3: Install PyTorch Geometric Dependencies**
+```bash
+pip install torch-geometric torch-cluster torch-scatter torch-sparse torch-spline-conv
+```
+
+**Step 4: Install Additional Required Packages**
+```bash
+pip install gensim gseapy node2vec pyvis biothings-client mygene adjustText openpyxl
+pip install pandas matplotlib seaborn scikit-learn scipy jupyter requests pyyaml tqdm
+```
+
+
+
+
+
