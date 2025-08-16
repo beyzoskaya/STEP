@@ -27,3 +27,10 @@ Predictions are biologically interpretable, revealing processes like neural remo
 **Step 1: Create Conda Environment**
 ```bash
 conda create -n STEPenv python=3.8 pytorch torchvision torchaudio -c pytorch -c conda-forge
+```
+
+**Step 2: Activate Environment**
+```bash
+conda activate STEPenv
+```
+
