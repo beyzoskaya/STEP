@@ -16,3 +16,14 @@ Genes are nodes in our dynamic graph model of gene expression, while edges stand
 - **STEPmi:** Handles complex miRNA datasets using spatio-temporal blocks, LSTM, and multi-head attention.  
 
 Predictions are biologically interpretable, revealing processes like neural remodeling, metabolism changes, and stress response. Key innovations include spatio-temporal GNNs, temporal embeddings, biologically-informed edge weights, and a custom multi-component loss function.
+
+## Environment Setup
+
+### Prerequisites
+- Anaconda or Miniconda installed
+- Python 3.8+
+
+### Installation Instructions
+**Step 1: Create Conda Environment**
+```bash
+conda create -n your-project-name python=3.8 pytorch torchvision torchaudio -c pytorch -c conda-forge
